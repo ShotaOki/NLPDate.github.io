@@ -1,0 +1,449 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>nlpdate</title>
+	<meta name="description" content="Documentation for nlpdate">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">nlpdate</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>nlpdate</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#nlpdate" id="nlpdate" style="color: inherit; text-decoration: none;">
+					<h1>NLPDate</h1>
+				</a>
+				<p>A JavaScript date library for Parse, manipulate, and formatting. Users can write it using Natural Language.</p>
+				<a href="#コンセプト" id="コンセプト" style="color: inherit; text-decoration: none;">
+					<h1>コンセプト</h1>
+				</a>
+				<ul>
+					<li>自然に話す言葉（Natural Language）で日時を操作できる</li>
+					<li>メソッドは 3 つだけ。簡単で、覚えやすく、読みやすい</li>
+					<li>軽量で、ライブラリが外部と通信しない</li>
+				</ul>
+				<a href="#できること" id="できること" style="color: inherit; text-decoration: none;">
+					<h2>できること</h2>
+				</a>
+				<ul>
+					<li>日本語や記号で書かれた日時文字列を AI で解析して、思い通りの日時を作ること</li>
+					<li>「3 時間後」「月末」「次の火曜日」のような相対表現で日時を操作すること</li>
+					<li>和暦やエポック秒を含む好きなフォーマットの変換</li>
+					<li>タイムゾーンの操作</li>
+				</ul>
+				<a href="#使い方" id="使い方" style="color: inherit; text-decoration: none;">
+					<h1>使い方</h1>
+				</a>
+				<a href="#導入" id="導入" style="color: inherit; text-decoration: none;">
+					<h2>導入</h2>
+				</a>
+				<p>以下のテキストを HTML のヘッダに置いてください<br /></p>
+				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://&lt;url&gt;/nlpdate/0.0.1/modern/nlpdate-main.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+				<p>※もし IE11 で動かす必要があれば、上のリンクの代わりにこちらを置いてください。</p>
+				<pre><code class="language-html"><span class="hljs-comment">&lt;!-- ES2015版：新しいブラウザのほか、IE11でも動きます。通常版よりもファイルサイズが大きくなります --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://&lt;url&gt;/nlpdate/0.0.1/es2015/nlpdate-main.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+				<a href="#基本的な使い方" id="基本的な使い方" style="color: inherit; text-decoration: none;">
+					<h2>基本的な使い方</h2>
+				</a>
+				<p>NLPDate 関数 + 変換メソッドで使います。</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// NLPDate 関数：日時を作成します。</span>
+<span class="hljs-keyword">let</span> date_object = NLPDate(<span class="hljs-string">&quot;2020年11月23日の今頃&quot;</span>);
+
+<span class="hljs-comment">// 変換メソッドで、ほしい形式（文字列）で取得します。</span>
+<span class="hljs-keyword">let</span> text = date_object.asString(<span class="hljs-string">&quot;日本語の年月日時分秒&quot;</span>);
+
+<span class="hljs-comment">// 出力結果：2020年11月23日 13時47分12秒</span>
+<span class="hljs-built_in">console</span>.log(text);</code></pre>
+				<p>もちろん、そのままつなげて書くこともできます。</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// textの内容：2020年11月23日 13時47分12秒</span>
+<span class="hljs-keyword">let</span> text = NLPDate(<span class="hljs-string">&quot;2020年11月23日の今頃&quot;</span>).asString(<span class="hljs-string">&quot;日本語の年月日時分秒&quot;</span>);</code></pre>
+				<p>日時以外が入っていても、日時を抜き出して解析します。</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// textの内容：2021年01月12日</span>
+<span class="hljs-keyword">let</span> text = NLPDate(
+  <span class="hljs-string">&quot;ふるさと納税　ワンストップ特例申請に関する申請期限（令和３年１月１２日）を掲載しました。&quot;</span>
+).asString(<span class="hljs-string">&quot;日本語の年月日&quot;</span>);</code></pre>
+				<p>変換できる文章の例は、こちらのサンプルでご確認ください。</p>
+				<p>http://<strong>____</strong>.com</p>
+				<a href="#変換メソッド" id="変換メソッド" style="color: inherit; text-decoration: none;">
+					<h2>変換メソッド</h2>
+				</a>
+				<p>変換メソッドは、asString を含めて 3 つあります。</p>
+				<table>
+					<thead>
+						<tr>
+							<th>メソッド</th>
+							<th>正常時<br />戻り値</th>
+							<th>エラー時<br />戻り値</th>
+							<th>引数</th>
+							<th>出力内容</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td>asString</td>
+							<td>string 型</td>
+							<td>undefined</td>
+							<td>フォーマット文字列</td>
+							<td>日時を文字列として出力します</td>
+						</tr>
+						<tr>
+							<td>asNumber</td>
+							<td>number 型</td>
+							<td>number<br />(エポックミリ秒)</td>
+							<td>asString に同じ</td>
+							<td>日時を数値として出力します</td>
+						</tr>
+						<tr>
+							<td>asDate</td>
+							<td>Date 型</td>
+							<td>undefined</td>
+							<td>なし</td>
+							<td>日時を Date 型として出力します</td>
+						</tr>
+				</tbody></table>
+				<a href="#asstring" id="asstring" style="color: inherit; text-decoration: none;">
+					<h3>asString</h3>
+				</a>
+				<p>文字列型になります。引数に書いた形式で、日時文字列が取得できます。</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// textの内容：令和2年11月24日 火曜日</span>
+<span class="hljs-keyword">let</span> text = NLPDate(<span class="hljs-string">&quot;明日&quot;</span>).asString(<span class="hljs-string">&quot;和暦の年月日と曜日&quot;</span>);</code></pre>
+				<p>引数を省略すると ISO8601 形式になります。</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// textの内容：2020/11/23T13:47:12+09:00</span>
+<span class="hljs-keyword">let</span> text = NLPDate(<span class="hljs-string">&quot;現在&quot;</span>).asString();</code></pre>
+				<p>文字列の頭と末尾を大かっこでくくると、YYYY のような形式で指定できます。</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// textの内容：2020_11_23</span>
+<span class="hljs-keyword">let</span> text = NLPDate(<span class="hljs-string">&quot;現在&quot;</span>).asString(<span class="hljs-string">&quot;[YYYY_MM_dd]&quot;</span>);</code></pre>
+				<a href="#asdate" id="asdate" style="color: inherit; text-decoration: none;">
+					<h3>asDate</h3>
+				</a>
+				<p>javascript 標準の Date 型になります。ほかのライブラリとの連携ができます。</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// Date型のオブジェクト</span>
+<span class="hljs-keyword">let</span> date = NLPDate(<span class="hljs-string">&quot;今日&quot;</span>).asDate();</code></pre>
+				<a href="#asnumber" id="asnumber" style="color: inherit; text-decoration: none;">
+					<h3>asNumber</h3>
+				</a>
+				<p>数値になります。数値と比較ができます。</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// 年を取得して比較する</span>
+<span class="hljs-keyword">if</span> (NLPDate(<span class="hljs-string">&quot;今日&quot;</span>).asNumber(<span class="hljs-string">&quot;年&quot;</span>) &lt; <span class="hljs-number">2019</span>) {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;今日は2019年よりも前だ&quot;</span>);
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;今日は2019年以降だ&quot;</span>);
+}</code></pre>
+				<a href="#日時の解析" id="日時の解析" style="color: inherit; text-decoration: none;">
+					<h2>日時の解析</h2>
+				</a>
+				<p>作りたい日時をそのまま日本語で書けば、思い通りの日時を取得できます。</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// textの内容：2020/11/26 14:22:00</span>
+<span class="hljs-keyword">let</span> text = NLPDate(<span class="hljs-string">&quot;しあさっての14時22分&quot;</span>).asString(
+  <span class="hljs-string">&quot;スラッシュ区切りの年月日時分秒&quot;</span>
+);</code></pre>
+				<p>月末、年末、次の第二水曜日のような表現でも、思い通りの日時になります</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// textの内容：2020/10/21 15:00:00</span>
+<span class="hljs-keyword">let</span> text = NLPDate(<span class="hljs-string">&quot;2020年10月の第三水曜日の午後3時&quot;</span>).asString(
+  <span class="hljs-string">&quot;スラッシュ区切りの年月日時分秒&quot;</span>
+);</code></pre>
+				<p>「6 分後」のような相対表現もできます</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// textの内容：2020/11/26 14:28:00</span>
+<span class="hljs-keyword">let</span> text = NLPDate(<span class="hljs-string">&quot;しあさっての14時22分の6分後&quot;</span>).asString(
+  <span class="hljs-string">&quot;スラッシュ区切りの年月日時分秒&quot;</span>
+);</code></pre>
+				<p>操作は前から順に反映されます</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// textの内容：2021/03/31 15:22:12</span>
+<span class="hljs-keyword">let</span> text = NLPDate(
+  <span class="hljs-string">&quot;明日の三か月後の3日後の６日後の19時、やっぱりそうじゃなくて午後3時の22分12秒の月末&quot;</span>
+).asString(<span class="hljs-string">&quot;スラッシュ区切りの年月日時分秒&quot;</span>);</code></pre>
+				<p>先頭にエポック秒や記号の日時を書いて、そこから操作することもできます</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// textの内容：2020-10-23 21:54:00</span>
+<span class="hljs-keyword">let</span> text = NLPDate(<span class="hljs-string">&quot;1606136040の一か月前&quot;</span>).asString(
+  <span class="hljs-string">&quot;ハイフン区切りの年月日時分秒&quot;</span>
+);</code></pre>
+				<a href="#あいまいな表現" id="あいまいな表現" style="color: inherit; text-decoration: none;">
+					<h3>あいまいな表現</h3>
+				</a>
+				<p>うろ覚えでも一番それに近いものに解析されます。</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// ISO8601ではなく、間違ってINO8001になっている</span>
+<span class="hljs-comment">// -&gt; ISO8601として解析される</span>
+<span class="hljs-comment">// textの内容：2020-10-23T21:54:00+09:00</span>
+<span class="hljs-keyword">let</span> text = NLPDate(<span class="hljs-string">&quot;1606136040の一か月前&quot;</span>).asString(<span class="hljs-string">&quot;INO8001&quot;</span>);</code></pre>
+				<p>解析できるトークンだけが反映されます</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// 余分なテキストが入っており、アイエスオーも間違えている</span>
+<span class="hljs-comment">// -&gt; 余分なテキストは無視、間違いは補正され、ISO8601として解析される</span>
+<span class="hljs-comment">// textの内容：2020-11-22T02:02:00+09:00</span>
+<span class="hljs-keyword">let</span> text = NLPDate(<span class="hljs-string">&quot;予定は午前2時の2分後のつもり&quot;</span>).asString(
+  <span class="hljs-string">&quot;よくわからんけどアイエヌオーみたいなやつ&quot;</span>
+);</code></pre>
+				<a href="#パラメータ" id="パラメータ" style="color: inherit; text-decoration: none;">
+					<h2>パラメータ</h2>
+				</a>
+				<p>タイムゾーンは NLPDate の引数で指定します <br />
+				※何も指定しない場合の初期値は Asia/Tokyo です。</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// タイムゾーンを指定する（タイムゾーンの例：Asia/Tokyoなど）</span>
+<span class="hljs-keyword">const</span> UTC = {
+  <span class="hljs-attr">time_zone</span>: <span class="hljs-string">&quot;UTC&quot;</span>,
+};
+
+<span class="hljs-comment">// textの内容：2020/11/19T05:40:29+00:00</span>
+<span class="hljs-keyword">let</span> text = NLPDate(<span class="hljs-string">&quot;現在&quot;</span>, UTC).asString();</code></pre>
+				<p>mode を指定することで、変換タイミングを変えることができます<br />
+				※何も指定しない場合の初期値は static です</p>
+				<p>static は変数を確保した時点で日時が決まるため、以下のような書き方で便利です。</p>
+				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> date = NLPDate(<span class="hljs-string">&quot;今日&quot;</span>, { <span class="hljs-attr">mode</span>: <span class="hljs-string">&quot;static&quot;</span> });
+
+<span class="hljs-comment">// 変換メソッドを複数回呼んだあと、足し算で繋ぐ</span>
+<span class="hljs-comment">// textの内容：2020_11</span>
+<span class="hljs-keyword">let</span> formatted = date.asString(<span class="hljs-string">&quot;数字の年&quot;</span>) + <span class="hljs-string">&quot;_&quot;</span> + date.asString(<span class="hljs-string">&quot;数字の月&quot;</span>);</code></pre>
+				<p>dynamic は実行時に日時が決まるため、以下のような書き方で便利です。</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// 現在日時をオブジェクトで持っておく</span>
+<span class="hljs-keyword">const</span> dynamic_date = NLPDate(<span class="hljs-string">&quot;現在&quot;</span>, { <span class="hljs-attr">mode</span>: <span class="hljs-string">&quot;dynamic&quot;</span> });
+
+<span class="hljs-comment">// ボタンをクリックするたびに、日時から違うファイル名を作る</span>
+<span class="hljs-comment">// file_nameの内容：20201010121011.png</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">on_click_button</span>(<span class="hljs-params">event</span>) </span>{
+  <span class="hljs-keyword">const</span> format = <span class="hljs-string">&quot;区切り文字なしの年月日時分秒&quot;</span>;
+  fetch(<span class="hljs-string">&quot;http://api.xxx.com&quot;</span>, {
+    <span class="hljs-attr">method</span>: <span class="hljs-string">&quot;POST&quot;</span>,
+    <span class="hljs-attr">body</span>: <span class="hljs-built_in">JSON</span>.stringify({
+      <span class="hljs-attr">file_name</span>: dynamic_date.asString(format) + <span class="hljs-string">&quot;.png&quot;</span>,
+      <span class="hljs-attr">binary</span>: data,
+    }),
+  });
+}</code></pre>
+				<a href="#ヒント" id="ヒント" style="color: inherit; text-decoration: none;">
+					<h2>ヒント</h2>
+				</a>
+				<a href="#ブラウザ以外で使う方法の例" id="ブラウザ以外で使う方法の例" style="color: inherit; text-decoration: none;">
+					<h3>ブラウザ以外で使う方法の例</h3>
+				</a>
+				<p>node がインストールされた環境であれば、bash や Windows のコマンドプロンプトでも使えます。</p>
+				<p>github のソースを Clone した後、取り込んだプロジェクトのルートにある bin までのパスを通してください。</p>
+				<p>例：MyName さんのデスクトップに、NLPDate のフォルダ名で clone した場合<br />
+				環境変数に登録する：C:\Users\MyName\Desktop\NLPDate\bin</p>
+				<pre><code class="language-bash"><span class="hljs-comment"># 以下のコマンドをコマンドプロンプトで入力：現在日時を和暦で出力します</span>
+nlp-date -f <span class="hljs-string">&quot;和暦の年月日時分&quot;</span>
+&gt;&gt; 令和3年01月10日 12時04分</code></pre>
+				<pre><code class="language-bash"><span class="hljs-comment"># 以下のコマンドをコマンドプロンプトで入力：入力した日時を別のフォーマットに変換します</span>
+nlp-date <span class="hljs-string">&quot;2020年4月1日&quot;</span> -f <span class="hljs-string">&quot;和暦の年月日&quot;</span>
+&gt;&gt; 令和2年4月1日</code></pre>
+				<p>Node で使う場合は、たとえば次のように書いてください。</p>
+				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> NLPDate = <span class="hljs-keyword">import</span>(
+  <span class="hljs-string">&quot;${Cloneしたフォルダのルート}/modern/nlpdate-main.min.js&quot;</span>
+);</code></pre>
+				<a href="#どうして-nlpdate-が関数になっているのか" id="どうして-nlpdate-が関数になっているのか" style="color: inherit; text-decoration: none;">
+					<h3>どうして NLPDate が関数になっているのか</h3>
+				</a>
+				<p>もともと JQuery の日時版を作りたかったから</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// HTMLのscriptの頭で以下のように書けば、別名で再宣言できます</span>
+<span class="hljs-built_in">window</span>.$_ = NLPDate;
+
+<span class="hljs-comment">// JQueryらしい書き方になります</span>
+<span class="hljs-keyword">let</span> date_string = $_(<span class="hljs-string">&quot;今日の4日後&quot;</span>).asString(<span class="hljs-string">&quot;年月日&quot;</span>);</code></pre>
+				<a href="#ライブラリの仕組み" id="ライブラリの仕組み" style="color: inherit; text-decoration: none;">
+					<h3>ライブラリの仕組み</h3>
+				</a>
+				<p>大まかな流れは以下の通りです</p>
+				<pre><code class="language-bash"><span class="hljs-comment"># 入力</span>
+<span class="hljs-string">&quot;あさっての3年後の12時30分の44秒&quot;</span>
+
+<span class="hljs-comment"># ひらがなの名詞を置換する</span>
+<span class="hljs-string">&quot;<span class="hljs-variable">${KEY:A}</span>の3年後の12時30分の44秒&quot;</span>
+
+<span class="hljs-comment"># 数字の前に区切り文字を入れる</span>
+-&gt; <span class="hljs-string">&quot;<span class="hljs-variable">${KEY:A}</span>の、3年後の、12時、30分の、44秒&quot;</span>
+
+<span class="hljs-comment"># ひらがなまたは区切り文字で文字列を切断する</span>
+-&gt; <span class="hljs-string">&quot;<span class="hljs-variable">${KEY:A}</span>&quot;</span> <span class="hljs-string">&quot;3年後&quot;</span> <span class="hljs-string">&quot;12時&quot;</span> <span class="hljs-string">&quot;30分&quot;</span> <span class="hljs-string">&quot;44秒&quot;</span>
+
+<span class="hljs-comment"># 置換した名詞を戻す</span>
+-&gt; <span class="hljs-string">&quot;あさって&quot;</span> <span class="hljs-string">&quot;3年後&quot;</span> <span class="hljs-string">&quot;12時&quot;</span> <span class="hljs-string">&quot;30分&quot;</span> <span class="hljs-string">&quot;44秒&quot;</span></code></pre>
+				<p>あいまい検索して、対応する関数を前から順に呼び出し、date を変換していきます。</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// 例：3年後であれば、</span>
+<span class="hljs-comment">// { method: &quot;${0}年後&quot;, argments: [ 3 ] }</span>
+<span class="hljs-comment">// に分解して、&quot;${0}年後&quot;に対応した以下のような関数を割り当てる</span>
+(date, argments) =&gt; {
+  <span class="hljs-comment">// テキストからn年後のnを取り出す</span>
+  <span class="hljs-keyword">const</span> n = argments[<span class="hljs-number">0</span>];
+  <span class="hljs-comment">// 引数として受け取ったDateを操作、操作したDateを次の関数に渡す</span>
+  date.setFullYear(date.getFullYear() + n);
+  <span class="hljs-keyword">return</span> date;
+};</code></pre>
+				<p>あいまい検索はレーベンシュタイン距離が最小になるテキストを探して検索します。</p>
+				<p>処理の中に乱数はないため、同じ入力であれば同じ解析をします。</p>
+				<a href="#その他" id="その他" style="color: inherit; text-decoration: none;">
+					<h1>その他</h1>
+				</a>
+				<a href="#動作要件" id="動作要件" style="color: inherit; text-decoration: none;">
+					<h2>動作要件</h2>
+				</a>
+				<a href="#modern-版" id="modern-版" style="color: inherit; text-decoration: none;">
+					<h3>Modern 版</h3>
+				</a>
+				<p>Chrome、Edge、Firefox で動作します。</p>
+				<a href="#es2015-版" id="es2015-版" style="color: inherit; text-decoration: none;">
+					<h3>ES2015 版</h3>
+				</a>
+				<p>Chrome、Edge、Firefox のほか、IE11 で動作します。</p>
+				<a href="#ライセンス" id="ライセンス" style="color: inherit; text-decoration: none;">
+					<h2>ライセンス</h2>
+				</a>
+				<p>MIT ライセンスです。</p>
+				<p>自由に利用（商用含む）、改変、再配布ができます。</p>
+				<p>利用によって生じた損害について、開発者は責任を持ちません。</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_common_base_parser_.html">&quot;common/base_<wbr>parser&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_common_date_unit_.html">&quot;common/date_<wbr>unit&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_common_pre_escape_.html">&quot;common/pre_<wbr>escape&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_common_splitter_.html">&quot;common/splitter&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_common_text_normalizer_.html">&quot;common/text_<wbr>normalizer&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_common_timezone_query_.html">&quot;common/timezone_<wbr>query&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_common_wareki_.html">&quot;common/wareki&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_common_weekday_unit_.html">&quot;common/weekday_<wbr>unit&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_config_config_.html">&quot;config/config&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_config_default_config_.html">&quot;config/default_<wbr>config&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_date_.html">&quot;date&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_date_parser_date_format_query_.html">&quot;date/parser/date_<wbr>format_<wbr>query&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_date_parser_date_parser_.html">&quot;date/parser/date_<wbr>parser&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_date_parser_predicate_.html">&quot;date/parser/predicate&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_date_parser_subject_.html">&quot;date/parser/subject&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_date_utility_date_control_.html">&quot;date/utility/date_<wbr>control&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_date_utility_date_utility_.html">&quot;date/utility/date_<wbr>utility&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_dto_date_wrapper_.html">&quot;dto/date_<wbr>wrapper&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_extend_array_extend_.html">&quot;extend/array_<wbr>extend&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_extend_integer_math_.html">&quot;extend/integer_<wbr>math&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_main_.html">&quot;main&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
