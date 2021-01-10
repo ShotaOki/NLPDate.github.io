@@ -8,4 +8,4 @@ NLPDate Documents
 <a href = "https://shotaoki.github.io/NLPDate.github.io/">https://shotaoki.github.io/NLPDate.github.io/</a>
 
 ## APIドキュメント
-<a href = "https://shotaoki.github.io/NLPDate.github.io/main/">https://shotaoki.github.io/NLPDate.github.io/main/</a>
+<a href = "https://shotaoki.github.io/NLPDate.github.io/main/globals.html">https://shotaoki.github.io/NLPDate.github.io/main/globals.html</a>
