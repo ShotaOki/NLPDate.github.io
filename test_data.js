@@ -100,7 +100,7 @@ function TestRequest(id, left_menu_id, time_zone_menu) {
     $("#" + self.id).empty();
     self.dataset.forEach(function (item) {
       let format_text = self.format_text.length == 0 ? null : self.format_text;
-      let format_text_display = format_text == null ? "" : '"${format_text}"';
+      let format_text_display = format_text == null ? "" : format_text;
       let time_zone_text = "";
       if (self.current_time_zone.length != 0) {
         time_zone_text =
