@@ -84,7 +84,8 @@ function TestRequest(id, left_menu_id, time_zone_menu) {
       let a_element = document.createElement("a");
       a_element.style.paddingLeft = 10;
       a_element.style.paddingRight = 10;
-      a_element.innerText = item.length == 0 ? "指定なし" : item;
+      a_element.innerText =
+        item.length == 0 ? "[指定なし] " : "[" + item + "] ";
       a_element.href = "#";
       a_element.setAttribute("data-index", index);
       a_element.onclick = function (e) {
