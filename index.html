@@ -7,8 +7,14 @@ title: NLPDate
 <head>
   <meta charset="utf-8" />
   <title>{{page.title}}</title>
-  {% include head/import-common-lib.html %} {% include head/import-fonts.html %}
+  <!-- Bootstrap -->
+  {% include head/import-common-lib.html %}
+  <!-- GoogleFont -->
+  {% include head/import-fonts.html %}
+  <!-- Highlighter -->
   {% include head/import-highlight.html %}
+  <!-- Analytics -->
+  {% include head/import-analytics.html %}
   <script src="https://cdn.jsdelivr.net/gh/ShotaOki/NLPDate@v0.0.1/es2015/nlpdate-main.min.js"></script>
   <script src="./landing/js/test_data.js"></script>
   <script src="./landing/js/tabs.js"></script>
@@ -45,8 +51,12 @@ title: NLPDate
     <div id="nav-content" class="carousel-inner"></div>
   </div>
   <div id="text-loader">
-    {% include html-home.html %} {% include html-start.html %} {% include
-    html-sample.html %}
+    <!-- Home -->
+    {% include html-home.html %}
+    <!-- Start Page -->
+    {% include html-start.html %}
+    <!-- Dynamic Sample -->
+    {% include html-sample.html %}
   </div>
   <script type="text/javascript">
     document.getElementById("text-loader").style.display = "none";
