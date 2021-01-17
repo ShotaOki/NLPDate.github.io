@@ -7,8 +7,7 @@
       <div class="card-body">
         <h5 class="card-title">動作環境</h5>
         <p class="card-text">
-          ブラウザ、node、コマンドプロンプト、bashで使えます。<br />
-          対応ブラウザはChrome、Edge、Firefox、IE11です。
+          ブラウザ、node、コマンドプロンプト、bashで使えます。
         </p>
       </div>
     </div>
@@ -22,9 +21,7 @@
         <p class="card-text">
           以下の &lt;scirpt> を &lt;head> 内側に入れてください。
         </p>
-        <figure>
-          <pre><code data-lang="html">&lt;script src="https://cdn.jsdelivr.net/gh/ShotaOki/NLPDate@v0.0.1/modern/nlpdate-main.min.js">&lt;/script></code></pre>
-        </figure>
+        {% include code/cdn.html %}
       </div>
     </div>
 
@@ -34,12 +31,9 @@
         <p class="card-text">
           Node で使う場合は、Cloneしたあと、たとえば次のように書いてください。
         </p>
-        <figure>
-          <pre><code data-lang="javascript">const NLPDate = import(
-  "${Cloneしたフォルダのルート}/modern/nlpdate-main.min.js"
-);
-                </code></pre>
-        </figure>
+
+        {% highlight javascript %}{% include code/node-import.js %}{%
+        endhighlight %}
       </div>
     </div>
 
@@ -58,10 +52,6 @@
           例：MyName さんのデスクトップに、NLPDate のフォルダ名で clone
           した場合<br />
           　　環境変数に登録する：C:\Users\MyName\Desktop\NLPDate\bin
-        </p>
-        <p class="card-text">
-          nlp-dateコマンドが使えるようになります。<br />
-          最初の引数が日時、-fの後ろにasStringのフォーマットを指定します。
         </p>
       </div>
     </div>
