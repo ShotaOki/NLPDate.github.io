@@ -23,8 +23,11 @@ body {
 .fa-times {
   color: red;
 }
-.fa-check {
+.fa-thumbs-up {
   color: green;
+}
+.fa-check {
+  color: #eee;
 }
 .card {
   margin-bottom: 10px;
