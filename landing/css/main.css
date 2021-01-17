@@ -1,0 +1,31 @@
+body {
+  font-family: "Sawarabi";
+}
+.karla-text {
+  font-family: "Caveat", cursive;
+}
+.title-font {
+  font-size: xx-large;
+}
+.section-font {
+  font-size: x-large;
+}
+.content-box {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.fa {
+  margin-right: 5px;
+}
+.fa-exclamation-triangle {
+  color: orange;
+}
+.fa-times {
+  color: red;
+}
+.fa-check {
+  color: green;
+}
+.card {
+  margin-bottom: 10px;
+}
