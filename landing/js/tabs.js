@@ -17,7 +17,10 @@ function Container() {
       key = sender;
     }
     // 現在の選択状態をクリアする
-    $(".carousel-item").toggleClass("active", false);
+    $self.nav_key_list.forEach(function (item) {
+      $("#" + item).toggleClass("active", false);
+    });
+
     $(".nav-item").toggleClass("active", false);
     // 押下されたヘッダ、コンテンツを選択状態にする
     $("#c_" + key).toggleClass("active", true);
@@ -51,6 +54,7 @@ function Container() {
   $self.initNavBar = function (nav_link_list, first_position) {
     let navbar_top = document.getElementById("navbar-top");
     let nav_content = document.getElementById("nav-content");
+    $self.nav_key_list = [];
     nav_link_list.forEach(function (item) {
       // 変数を保持する
       let head_element = document.createElement("a");
@@ -74,6 +78,7 @@ function Container() {
         // Ajax用のコンテナを設定する
         content_element = document.createElement("div");
         content_element.id = "c_" + item.key;
+        $self.nav_key_list.push(content_element.id);
         content_element.classList.add("carousel-item");
         if (item.body) {
           content_element.innerHTML = $self.content_data[item.body];
