@@ -8,4 +8,4 @@ NLPDate Documents
 
 ## NLPDate の紹介ページ
 
-<a href = "https://shotaoki.github.io/NLPDate.github.io/">https://shotaoki.github.io/NLPDate.github.io/</a>
+<a href = "https://date.nlpjs.org/">https://date.nlpjs.org</a>
