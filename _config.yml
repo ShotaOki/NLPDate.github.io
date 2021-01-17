@@ -23,7 +23,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   A JavaScript date library for Parse, manipulate, and formatting. Users
   can write it using Natural Language.
 baseurl: "/NLPDate.github.io" # the subpath of your site, e.g. /blog
-url: "https://shotaoki.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://date.nlpjs.org" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: ShotaOki
 
 # Build settings
