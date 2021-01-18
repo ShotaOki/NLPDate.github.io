@@ -1,57 +1,41 @@
 <!-- Start -->
-<div class="container-fluid">
-  <p class="karla-text title-font">Getting started</p>
+{% capture my_include %} 
+# Getting started
 
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">動作環境</h5>
-      <p class="card-text">
-        ブラウザ、node、コマンドプロンプト、bashで使えます。
-      </p>
-    </div>
-  </div>
+## 動作環境
 
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">JavaScriptで始める</h5>
-      <p class="card-text">
-        HTMLに導入するときは、CDNを使って始めることができます。
-      </p>
-      <p class="card-text">
-        以下の &lt;scirpt> を &lt;head> 内側に入れてください。
-      </p>
-      {% include code/cdn.html %}
-    </div>
-  </div>
+ブラウザ、node、コマンドプロンプト、bashで使えます。
 
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Nodeで始める</h5>
-      <p class="card-text">
-        Node で使う場合は、Cloneしたあと、たとえば次のように書いてください。
-      </p>
+***
 
-      {% highlight javascript %}{% include code/node-import.js %}{% endhighlight
-      %}
-    </div>
-  </div>
+## JavaScriptで始める
 
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">コマンドプロンプト、bashで始める</h5>
-      <p class="card-text">
-        node がインストールされた環境であれば、bash や Windows
-        のコマンドプロンプトでも使えます。
-      </p>
-      <p class="card-text">
-        github のソースを Clone した後、取り込んだプロジェクトのルートにある bin
-        までのパスを通してください。
-      </p>
-      <p class="card-text">
-        例：MyName さんのデスクトップに、NLPDate のフォルダ名で clone
-        した場合<br />
-        　　環境変数に登録する：C:\Users\MyName\Desktop\NLPDate\bin
-      </p>
-    </div>
-  </div>
-</div>
+HTMLに導入するときは、CDNを使って始めることができます。
+
+以下の &lt;scirpt> を &lt;head> 内側に入れてください。
+
+{% include code/cdn.html %}
+
+***
+
+## Nodeで始める
+
+Node で使う場合は、Cloneしたあと、たとえば次のように書いてください。
+
+{% highlight javascript %}{% include code/node-import.js %}{% endhighlight %}
+
+***
+
+## コマンドプロンプト、bashで始める
+
+node がインストールされた環境であれば、bash や Windowsのコマンドプロンプトでも使えます。
+
+github のソースを Clone した後、取り込んだプロジェクトのルートにある binまでのパスを通してください。
+
+例：MyName さんのデスクトップに、NLPDate のフォルダ名で cloneした場合<br />
+　　環境変数に登録する：C:\Users\MyName\Desktop\NLPDate\bin
+
+***
+
+{% endcapture %}
+{{ my_include | markdownify }}

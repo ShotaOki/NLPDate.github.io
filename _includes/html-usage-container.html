@@ -69,4 +69,40 @@
       }
     });
   });
+
+  $(window).bind("load", function () {
+    let tables = $("#c_start").find("table");
+    tables.addClass("table");
+    tables.addClass("table-striped");
+
+    $("#c_start")
+      .find("h1")
+      .replaceWith(function () {
+        let title = this;
+        $(title).replaceWith(
+          '<p class="karla-text title-font">' + title.innerHTML + "</p>"
+        );
+      });
+
+    $("#c_start")
+      .find("h2")
+      .replaceWith(function () {
+        let title = this;
+        $(title).replaceWith(
+          '<h5 class="card-title">' + title.innerHTML + "</h5>"
+        );
+      });
+
+    let carousel_list = $("#c_start").find(".carousel-item");
+    carousel_list.each(function (index) {
+      let self = carousel_list[index];
+      let html = self.innerHTML;
+      html = html.replaceAll(
+        "<h5",
+        '<div class="card"><div class="card-body"><h5'
+      );
+      html = html.replaceAll("<hr>", "</div></div>");
+      self.innerHTML = html;
+    });
+  });
 </script>

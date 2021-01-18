@@ -1,13 +1,12 @@
 <!-- コンストラクタ -->
-<div class="container-fluid">
-  <p class="karla-text title-font">Constructor</p>
+{% capture my_include %} 
 
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">コンストラクタ</h5>
-      <p class="card-text">
-        自然な日本語を渡すことで、思い通りの日時を作成します。
-        {% capture my_include %} 
+# Constructor
+
+## コンストラクタ
+
+自然な日本語を渡すことで、思い通りの日時を作成します。
+
 ```javascript
 // 今日の日時
 let today = NLPDate("今日");
@@ -24,18 +23,13 @@ let any_day = NLPDate("昭和40年4月10日");
 // 相対日時
 let any_day = NLPDate("次の土曜日の4日後");
 ```
-        {% endcapture %}
-        {{ my_include | markdownify }}
-      </p>
-    </div>
-  </div>
 
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">コンストラクタに渡せるデータ</h5>
-      <p class="card-text">
-        日時文字列のほかにも、以下のものが指定できます。
-        {% capture my_include %}
+***
+
+## コンストラクタに渡せるデータ
+
+日時文字列のほかにも、以下のものが指定できます。
+
 | 指定 | 型 | 引数の例 | 処理結果 |
 | -------- | ------------------ | ---------------------------- | ------------------ |
 | 日時を指定 | string 型          | 明日の4時20分                   | テキストが指す日時を作成します。 |
@@ -43,11 +37,8 @@ let any_day = NLPDate("次の土曜日の4日後");
 | 年月日を指定 | string 型          | 19901230                  | 年月日が指す日時を作成します。 |
 | 記号の日時を指定 | string 型          | 1990/12/30                  | 年月日が指す日時を作成します。 |
 | 数字を指定 | number 型          | 19901230 | 桁数がエポック秒の桁数であればエポックとして、年月日であれば年月日として解析して作成します。 |
-        {% endcapture %}
-        {{ my_include | markdownify }}
-      </p>
-    </div>
-  </div>
 
-</div>
-```
+***
+
+{% endcapture %}
+{{ my_include | markdownify }}
