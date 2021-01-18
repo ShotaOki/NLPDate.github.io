@@ -1,6 +1,5 @@
 <!-- コンストラクタ -->
 {% capture my_include %} 
-
 # Constructor
 
 ## コンストラクタ
