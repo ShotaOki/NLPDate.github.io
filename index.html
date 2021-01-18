@@ -18,9 +18,10 @@ title: NLPDate
   <script src="https://cdn.jsdelivr.net/gh/ShotaOki/NLPDate@v0.0.1/es2015/nlpdate-main.min.js"></script>
   <script src="./landing/js/test_data.js"></script>
   <script src="./landing/js/tabs.js"></script>
+  <script src="./landing/js/usage.js"></script>
   <script>
     var _container;
-    window.onload = function () {
+    $(window).bind("load", function () {
       let container = new Container();
       _container = container;
       let first_position = "home";
@@ -41,7 +42,11 @@ title: NLPDate
       test.update_time_zone();
       test.update_table();
       test.create_left_menu();
-    };
+
+      let tables = $("#c_start").find("table");
+      tables.addClass("table");
+      tables.addClass("table-striped");
+    });
   </script>
   <link rel="stylesheet" href="./landing/css/main.css" />
 </head>

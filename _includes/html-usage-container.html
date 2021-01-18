@@ -3,18 +3,28 @@
     <div class="row">
       <div class="col-2">
         <div
-          id="column-usage"
+          id="usage-column"
           class="nav flex-column nav-pills"
           aria-orientation="vertical"
-        >
-          <a class="nav-link active">Start</a>
-        </div>
+        ></div>
       </div>
       <div class="col-10">
         <div class="carousel slide" data-ride="carousel">
           <div id="usage-content" class="carousel-inner">
-            <div class="carousel-item active">
-              {% include html-start.html %}
+            <div
+              class="carousel-item active"
+              data-usage-container-id="Getting started"
+            >
+              <!-- Start -->
+              {% include usage-start.md %}
+            </div>
+            <div class="carousel-item" data-usage-container-id="コンストラクタ">
+              <!-- Constractor -->
+              {% include usage-constractor.md %}
+            </div>
+            <div class="carousel-item" data-usage-container-id="変換API">
+              <!-- Usage -->
+              {% include usage-api.md %}
             </div>
           </div>
         </div>
@@ -22,3 +32,22 @@
     </div>
   </div>
 </div>
+<script>
+  $(window).bind("load", function () {
+    let elements = $("[data-usage-container-id]");
+    let parent = document.getElementById("usage-column");
+    elements.each(function (item) {
+      let container_id = elements[item].dataset.usageContainerId;
+      let child = document.createElement("a");
+      child.classList.add("nav-link");
+      if (item == 0) {
+        child.classList.add("active");
+      }
+      child.style.cursor = "pointer";
+      child.setAttribute("data-usage-id", container_id);
+      child.innerHTML = container_id;
+      child.onclick = onClickUsageItem;
+      parent.appendChild(child);
+    });
+  });
+</script>

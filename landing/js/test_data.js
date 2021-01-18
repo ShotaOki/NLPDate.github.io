@@ -141,10 +141,12 @@ function TestRequest(id, left_menu_id, time_zone_menu) {
       let a_element = document.createElement("a");
       a_element.classList.add("nav-link");
       a_element.setAttribute("data-index", index);
+      a_element.setAttribute("data-dynamic-sample-selectors", "true");
+      a_element.style.cursor = "pointer";
       a_element.innerHTML = text;
       a_element.onclick = function (e) {
         if (!e.target.classList.contains("active")) {
-          $(".nav-link").removeClass("active");
+          $("[data-dynamic-sample-selectors]").removeClass("active");
           e.target.classList.add("active");
 
           self.format_text = self.format[e.target.dataset.index];
