@@ -12,12 +12,22 @@
         <div class="carousel slide" data-ride="carousel">
           <div id="usage-content" class="carousel-inner">
             <div
+              style="display: none"
+              data-usage-container-id="Install"
+              data-type-section-head="true"
+            ></div>
+            <div
               class="carousel-item active"
               data-usage-container-id="Getting started"
             >
               <!-- Start -->
               {% include usage-start.md %}
             </div>
+            <div
+              style="display: none"
+              data-usage-container-id="API"
+              data-type-section-head="true"
+            ></div>
             <div class="carousel-item" data-usage-container-id="コンストラクタ">
               <!-- Constractor -->
               {% include usage-constractor.md %}
@@ -36,18 +46,27 @@
   $(window).bind("load", function () {
     let elements = $("[data-usage-container-id]");
     let parent = document.getElementById("usage-column");
+    let active_element_count = 0;
     elements.each(function (item) {
       let container_id = elements[item].dataset.usageContainerId;
-      let child = document.createElement("a");
-      child.classList.add("nav-link");
-      if (item == 0) {
-        child.classList.add("active");
+      if (elements[item].dataset.typeSectionHead) {
+        let section_head = document.createElement("div");
+        section_head.classList.add("list-section-header");
+        section_head.innerHTML = container_id;
+        parent.appendChild(section_head);
+      } else {
+        let child = document.createElement("a");
+        child.classList.add("nav-link");
+        if (active_element_count == 0) {
+          child.classList.add("active");
+        }
+        child.style.cursor = "pointer";
+        child.setAttribute("data-usage-id", container_id);
+        child.innerHTML = container_id;
+        child.onclick = onClickUsageItem;
+        parent.appendChild(child);
+        active_element_count++;
       }
-      child.style.cursor = "pointer";
-      child.setAttribute("data-usage-id", container_id);
-      child.innerHTML = container_id;
-      child.onclick = onClickUsageItem;
-      parent.appendChild(child);
     });
   });
 </script>
