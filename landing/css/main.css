@@ -1,14 +1,15 @@
 body {
   font-family: "Sawarabi";
+  font-size: 1.2rem;
 }
 .karla-text {
   font-family: "Caveat", cursive;
 }
 .title-font {
-  font-size: xx-large;
+  font-size: 2.2em;
 }
 .section-font {
-  font-size: x-large;
+  font-size: 1.8em;
 }
 .content-box {
   padding-top: 20px;
@@ -39,4 +40,10 @@ body {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-bottom-color: gray;
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 1rem;
+  }
 }
