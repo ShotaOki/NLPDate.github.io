@@ -42,7 +42,7 @@ body {
   border-bottom-color: gray;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   body {
     font-size: 1rem;
   }
