@@ -1,6 +1,5 @@
 body {
   font-family: "Sawarabi";
-  font-size: 1.2rem;
 }
 .karla-text {
   font-family: "Caveat", cursive;
@@ -41,9 +40,25 @@ body {
   border-bottom-width: 1px;
   border-bottom-color: gray;
 }
-
-@media (min-width: 992px) {
-  body {
-    font-size: 1rem;
+.home-text {
+  text-align: left !important;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.home-flex-box {
+  -ms-flex-pack: left !important;
+  justify-content: left !important;
+}
+@media (min-width: 768px) {
+  .home-text {
+    text-align: center !important;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+@media (min-width: 768px) {
+  .home-flex-box {
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
   }
 }
