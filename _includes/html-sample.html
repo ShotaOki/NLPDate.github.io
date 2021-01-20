@@ -1,22 +1,7 @@
 <!-- Sample Contents -->
 <div id="html-sample">
-  <div class="container-fluid">
-    <p class="karla-text title-font">Sample</p>
-    <div class="card">
-      <div class="card-body">
-        <p class="card-text">
-          ライブサンプルです。実際にブラウザ上でNLPDateが動いています。
-        </p>
-        <p class="card-text">
-          JavaScript列のテキストをコピーして貼り付ければ、
-          処理結果列の出力になります。
-        </p>
-      </div>
-    </div>
-  </div>
-  <hr />
   <div class="row">
-    <div class="col-lg-2 col-12">
+    <div class="col-lg-2 col-12 selection-area">
       <div
         id="column"
         class="nav flex-column nav-pills"
@@ -24,19 +9,35 @@
       ></div>
     </div>
     <div class="col-lg-10 col-12">
-      <div class="float-right" style="padding: 10px">
-        Time Zone :
-        <span id="timezone-list"> </span>
+      <div class="container-fluid" id="sample-content-no-display">
+        <p class="karla-text title-font">Sample</p>
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">
+              ライブサンプルです。実際にブラウザ上でNLPDateが動いています。
+            </p>
+            <p class="card-text">
+              JavaScript列のテキストをコピーして貼り付ければ、
+              処理結果列の出力になります。
+            </p>
+          </div>
+        </div>
       </div>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">JavaScript</th>
-            <th scope="col">処理結果</th>
-          </tr>
-        </thead>
-        <tbody id="result"></tbody>
-      </table>
+      <div id="sample-content-display" style="display: none">
+        <div class="float-right" style="padding: 10px">
+          Time Zone :
+          <span id="timezone-list"> </span>
+        </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">JavaScript</th>
+              <th scope="col">処理結果</th>
+            </tr>
+          </thead>
+          <tbody id="result"></tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

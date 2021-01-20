@@ -146,6 +146,8 @@ function TestRequest(id, left_menu_id, time_zone_menu) {
       a_element.innerHTML = text;
       a_element.onclick = function (e) {
         if (!e.target.classList.contains("active")) {
+          $("#sample-content-no-display").hide();
+          $("#sample-content-display").show();
           $("[data-dynamic-sample-selectors]").removeClass("active");
           e.target.classList.add("active");
 
@@ -154,10 +156,6 @@ function TestRequest(id, left_menu_id, time_zone_menu) {
         }
         e.preventDefault();
       };
-
-      if (item.length == 0) {
-        a_element.classList.add("active");
-      }
       left_menu_parent.appendChild(a_element);
     });
   };
