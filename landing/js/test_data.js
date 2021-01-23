@@ -7,7 +7,8 @@ function TestRequest(id, left_menu_id, time_zone_menu) {
   self.current_time_zone = "";
 
   self.dataset = [
-    "現在", //
+    "2020年10月10日10時10分10秒の5か月後の2時間後", //
+    "現在",
     "今日",
     "明日",
     "昨日",
@@ -41,8 +42,10 @@ function TestRequest(id, left_menu_id, time_zone_menu) {
   ];
 
   self.format = [
+    "# 指定なし、デフォルト",
     "", //
     "ISO8601",
+    "# 区切り文字",
     "スラッシュ区切りの年月日時分秒",
     "ハイフン区切りの年月日時分秒",
     "日本語の年月日時分秒",
@@ -52,12 +55,14 @@ function TestRequest(id, left_menu_id, time_zone_menu) {
     "スラッシュ区切りの年月日",
     "スラッシュ区切りの年月日時分秒とミリ秒",
     "スラッシュ区切りの年月日と曜日",
+    "# 日本語",
     "日本語の年月",
     "日本語の年",
     "日本語の月",
     "和暦の年",
     "日本語の日",
     "日本語の曜日",
+    "# 数字",
     "数字の年",
     "数字の月",
     "数字の日",
@@ -65,8 +70,10 @@ function TestRequest(id, left_menu_id, time_zone_menu) {
     "数字の分",
     "数字の秒",
     "数字のミリ秒",
+    "# エポック",
     "エポック秒",
     "エポックミリ秒",
+    "# カスタムフォーマット",
     "[日時:YYYY_MM_dd HH_mm_ss（E）]",
   ];
 
@@ -135,27 +142,35 @@ function TestRequest(id, left_menu_id, time_zone_menu) {
     let left_menu_parent = document.getElementById(self.left_menu_id);
     self.format.forEach(function (item, index) {
       let text = item;
+      let a_element = null;
       if (text.length == 0) {
         text = "指定なし";
       }
-      let a_element = document.createElement("a");
-      a_element.classList.add("nav-link");
-      a_element.setAttribute("data-index", index);
-      a_element.setAttribute("data-dynamic-sample-selectors", "true");
-      a_element.style.cursor = "pointer";
-      a_element.innerHTML = text;
-      a_element.onclick = function (e) {
-        if (!e.target.classList.contains("active")) {
-          $("#sample-content-no-display").hide();
-          $("#sample-content-display").show();
-          $("[data-dynamic-sample-selectors]").removeClass("active");
-          e.target.classList.add("active");
+      if (text.startsWith("#")) {
+        a_element = document.createElement("div");
+        a_element.classList.add("list-section-header");
+        a_element.innerHTML = text.substring(2);
+      } else {
+        a_element = document.createElement("a");
+        a_element.classList.add("nav-link");
+        a_element.setAttribute("data-index", index);
+        a_element.setAttribute("data-dynamic-sample-selectors", "true");
+        a_element.style.cursor = "pointer";
+        a_element.style.paddingLeft = "8px";
+        a_element.innerHTML = text;
+        a_element.onclick = function (e) {
+          if (!e.target.classList.contains("active")) {
+            $("#sample-content-no-display").hide();
+            $("#sample-content-display").show();
+            $("[data-dynamic-sample-selectors]").removeClass("active");
+            e.target.classList.add("active");
 
-          self.format_text = self.format[e.target.dataset.index];
-          self.update_table();
-        }
-        e.preventDefault();
-      };
+            self.format_text = self.format[e.target.dataset.index];
+            self.update_table();
+          }
+          e.preventDefault();
+        };
+      }
       left_menu_parent.appendChild(a_element);
     });
   };
@@ -167,8 +182,8 @@ function TestRequest(id, left_menu_id, time_zone_menu) {
     parent_table.appendChild(line);
 
     let content = {
-      title: document.createElement("td"),
       result: document.createElement("td"),
+      title: document.createElement("td"),
     };
     Object.keys(content).forEach(function (key) {
       let td = content[key];

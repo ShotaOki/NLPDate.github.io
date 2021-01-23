@@ -90,6 +90,8 @@
     let tables = $("#c_start").find("table");
     tables.addClass("table");
     tables.addClass("table-striped");
+    tables.css("min-width", "800px");
+    tables.wrap('<div style = "overflow-x: scroll"></div>');
 
     $("#c_start")
       .find("h1")
